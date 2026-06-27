@@ -3,7 +3,12 @@ import requests
 from telegram import Update
 from telegram.ext import Application, MessageHandler, filters, ContextTypes
 
-API = os.getenv("API_URL")
+import os
+# ... (остальной импорт)
+
+# Берем URL бэкенда из переменной окружения, если её нет — берем локальный
+API_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8000/chat")
+
 TOKEN = os.getenv("TELEGRAM_TOKEN")
 
 async def handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
